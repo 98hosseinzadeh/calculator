@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .number-buttons {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            gap: 16px;
+        }
+
+        .number-btn {
+            height: 48px;
+            background-color: #d68910;
+            border-radius: 12px;
+            color: white;
+            border: 0;
+            font-size: 24px;
+        }
+
+        .operator-buttons {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            gap: 16px;
+
+        }
+
+        .operator-btn {
+            height: 48px;
+            background-color: #34495e;
+            border-radius: 12px;
+            color: white;
+            border: 0;
+            font-size: 24px;
+        }
+
+        .result-btn {
+            height: 48px;
+            background-color: #27ae60;
+            border-radius: 12px;
+            color: white;
+            border: 0;
+            font-size: 24px;
+        }
+
+        .clear-btn {
+            height: 48px;
+            background-color: #2980b9;
+            border-radius: 12px;
+            color: white;
+            border: 0;
+            font-size: 24px;
+        }
+
+        .number-btn:hover {
+            background-color: #f39c12;
+            transition: 8ms all;
+        }
+
+        .operator-btn:hover {
+            background-color: #5d6d7e;
+            transition: 8ms all;
+        }
+
+        .result-btn:hover {
+            background-color: #52be80;
+            transition: 8ms all;
+        }
+
+        .clear-btn:hover {
+            background-color: #5499c7;
+            transition: 8ms all;
+        }
+
+        .show {
+            width: 340px;
+            background-color: whitesmoke;
+            height: 60px;
+            padding: 16px;
+            border: 0;
+            border-radius: 12px;
+            color: #4a4a4a;
+            font-size: 32px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" class="show" id="show" readonly>
+        <div class="number-buttons">
+            <button class="number-btn" onclick="getExpersion('1')">1</button>
+            <button class="number-btn" onclick="getExpersion('2')">2</button>
+            <button class="number-btn" onclick="getExpersion('3')">3</button>
+            <button class="number-btn" onclick="getExpersion('4')">4</button>
+            <button class="number-btn" onclick="getExpersion('5')">5</button>
+            <button class="number-btn" onclick="getExpersion('6')">6</button>
+            <button class="number-btn" onclick="getExpersion('7')">7</button>
+            <button class="number-btn" onclick="getExpersion('8')">8</button>
+            <button class="number-btn" onclick="getExpersion('9')">9</button>
+            <button class="number-btn" onclick="getExpersion('0')">0</button>
+        </div>
+        <div class="operator-buttons">
+            <button class="operator-btn" onclick="getExpersion('+')">+</button>
+            <button class="operator-btn" onclick="getExpersion('-')">-</button>
+            <button class="operator-btn" onclick="getExpersion('*')">*</button>
+            <button class="operator-btn" onclick="getExpersion('/')">/</button>
+            <button class="clear-btn" onclick="clearExpersion()">C</button>
+            <button class="result-btn" onclick="calc()">=</button>
+        </div>
+    </div>
+    <script>
+        let expersion = ''
+        const show = document.getElementById('show')
+        const getExpersion = (expersionParam) => {
+            console.log('click')
+            expersion += expersionParam
+            show.value = expersion
+        }
+
+        const calc = () => {
+            let result = eval(expersion)
+            show.value = result
+            expersion = result
+        }
+        const clearExpersion = () => {
+            console.log('click')
+            expersion = ''
+            show.value = ''
+        }
+    </script>
+</body>
+
+</html>
